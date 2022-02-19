@@ -1,0 +1,17 @@
+let requestURL =
+  "https://ddragon.leagueoflegends.com/cdn/11.3.1/data/ko_KR/champion.json";
+let request = new XMLHttpRequest();
+request.open("GET", requestURL);
+request.responseType = "json";
+request.send();
+request.onload = function () {
+  let champions = request.response;
+  let champs = Object.keys(champions["data"]);
+  for (let i = 0; i < champs.length; i++) {
+    let champsNow = champs[i];
+    let champsImg = `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champsNow}_0.jpg`;
+    let listItem = document.createElement("li");
+    listItem.textContent = champsImg[i];
+    console.log(champsImg);
+  }
+};
